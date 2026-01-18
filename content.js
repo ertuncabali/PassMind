@@ -75,6 +75,146 @@ const translations = {
     selectLanguage: 'اللغة',
     openSettings: 'فتح إعدادات كلمة المرور',
     close: 'إغلاق'
+  },
+  es: {
+    title: 'Mostrar Contraseña',
+    toggleAll: 'Mostrar Todo',
+    toggleAllHide: 'Ocultar Todo',
+    passwordFieldsFound: 'campos de contraseña encontrados',
+    visible: 'Visible',
+    hidden: 'Oculto',
+    status: 'Estado',
+    active: 'Activo',
+    helpText: 'Mostrar u ocultar todos los campos de contraseña a la vez',
+    selectLanguage: 'Idioma',
+    openSettings: 'Abrir configuración de contraseña',
+    close: 'Cerrar'
+  },
+  pt: {
+    title: 'Alternar Senha',
+    toggleAll: 'Mostrar Tudo',
+    toggleAllHide: 'Ocultar Tudo',
+    passwordFieldsFound: 'campos de senha encontrados',
+    visible: 'Visível',
+    hidden: 'Oculto',
+    status: 'Status',
+    active: 'Ativo',
+    helpText: 'Mostrar ou ocultar todos os campos de senha de uma vez',
+    selectLanguage: 'Idioma',
+    openSettings: 'Abrir configurações de senha',
+    close: 'Fechar'
+  },
+  ru: {
+    title: 'Переключить Пароль',
+    toggleAll: 'Показать Все',
+    toggleAllHide: 'Скрыть Все',
+    passwordFieldsFound: 'полей пароля найдено',
+    visible: 'Видимые',
+    hidden: 'Скрытые',
+    status: 'Статус',
+    active: 'Активно',
+    helpText: 'Показать или скрыть все поля пароля одновременно',
+    selectLanguage: 'Язык',
+    openSettings: 'Открыть настройки пароля',
+    close: 'Закрыть'
+  },
+  it: {
+    title: 'Mostra Password',
+    toggleAll: 'Mostra Tutto',
+    toggleAllHide: 'Nascondi Tutto',
+    passwordFieldsFound: 'campi password trovati',
+    visible: 'Visibile',
+    hidden: 'Nascosto',
+    status: 'Stato',
+    active: 'Attivo',
+    helpText: 'Mostra o nascondi tutti i campi password contemporaneamente',
+    selectLanguage: 'Lingua',
+    openSettings: 'Apri impostazioni password',
+    close: 'Chiudi'
+  },
+  ja: {
+    title: 'パスワード表示',
+    toggleAll: 'すべて表示',
+    toggleAllHide: 'すべて非表示',
+    passwordFieldsFound: 'パスワードフィールドが見つかりました',
+    visible: '表示',
+    hidden: '非表示',
+    status: 'ステータス',
+    active: 'アクティブ',
+    helpText: 'すべてのパスワードフィールドを一度に表示または非表示',
+    selectLanguage: '言語',
+    openSettings: 'パスワード設定を開く',
+    close: '閉じる'
+  },
+  ko: {
+    title: '비밀번호 표시',
+    toggleAll: '모두 표시',
+    toggleAllHide: '모두 숨기기',
+    passwordFieldsFound: '비밀번호 필드 발견',
+    visible: '표시됨',
+    hidden: '숨겨짐',
+    status: '상태',
+    active: '활성',
+    helpText: '모든 비밀번호 필드를 한 번에 표시하거나 숨기기',
+    selectLanguage: '언어',
+    openSettings: '비밀번호 설정 열기',
+    close: '닫기'
+  },
+  zh: {
+    title: '密码切换',
+    toggleAll: '显示全部',
+    toggleAllHide: '隐藏全部',
+    passwordFieldsFound: '找到密码字段',
+    visible: '可见',
+    hidden: '隐藏',
+    status: '状态',
+    active: '活跃',
+    helpText: '一次显示或隐藏所有密码字段',
+    selectLanguage: '语言',
+    openSettings: '打开密码设置',
+    close: '关闭'
+  },
+  pl: {
+    title: 'Przełącz Hasło',
+    toggleAll: 'Pokaż Wszystko',
+    toggleAllHide: 'Ukryj Wszystko',
+    passwordFieldsFound: 'pól hasła znaleziono',
+    visible: 'Widoczne',
+    hidden: 'Ukryte',
+    status: 'Status',
+    active: 'Aktywne',
+    helpText: 'Pokaż lub ukryj wszystkie pola hasła jednocześnie',
+    selectLanguage: 'Język',
+    openSettings: 'Otwórz ustawienia hasła',
+    close: 'Zamknij'
+  },
+  nl: {
+    title: 'Wachtwoord Wisselen',
+    toggleAll: 'Alles Tonen',
+    toggleAllHide: 'Alles Verbergen',
+    passwordFieldsFound: 'wachtwoordvelden gevonden',
+    visible: 'Zichtbaar',
+    hidden: 'Verborgen',
+    status: 'Status',
+    active: 'Actief',
+    helpText: 'Toon of verberg alle wachtwoordvelden tegelijk',
+    selectLanguage: 'Taal',
+    openSettings: 'Wachtwoordinstellingen openen',
+    close: 'Sluiten'
+  },
+  hi: {
+    title: 'पासवर्ड टॉगल',
+    toggleAll: 'सभी दिखाएं',
+    toggleAllHide: 'सभी छुपाएं',
+    passwordFieldsFound: 'पासवर्ड फ़ील्ड मिले',
+    visible: 'दिखाई दे रहा',
+    hidden: 'छुपा हुआ',
+    status: 'स्थिति',
+    active: 'सक्रिय',
+    helpText: 'एक साथ सभी पासवर्ड फ़ील्ड दिखाएं या छुपाएं',
+    selectLanguage: 'भाषा',
+    openSettings: 'पासवर्ड सेटिंग्स खोलें',
+    close: 'बंद करें'
   }
 };
 
@@ -84,7 +224,7 @@ function detectBrowserLanguage() {
   const langCode = browserLang.split('-')[0].toLowerCase();
   
   // Desteklenen diller
-  const supportedLangs = ['en', 'de', 'fr', 'tr', 'ar'];
+  const supportedLangs = ['en', 'de', 'fr', 'tr', 'ar', 'es', 'pt', 'ru', 'it', 'ja', 'ko', 'zh', 'pl', 'nl', 'hi'];
   
   if (supportedLangs.includes(langCode)) {
     return langCode;
@@ -661,6 +801,16 @@ function createDrawer() {
             <option value="fr" ${currentLanguage === 'fr' ? 'selected' : ''}>Français</option>
             <option value="tr" ${currentLanguage === 'tr' ? 'selected' : ''}>Türkçe</option>
             <option value="ar" ${currentLanguage === 'ar' ? 'selected' : ''}>العربية</option>
+            <option value="es" ${currentLanguage === 'es' ? 'selected' : ''}>Español</option>
+            <option value="pt" ${currentLanguage === 'pt' ? 'selected' : ''}>Português</option>
+            <option value="ru" ${currentLanguage === 'ru' ? 'selected' : ''}>Русский</option>
+            <option value="it" ${currentLanguage === 'it' ? 'selected' : ''}>Italiano</option>
+            <option value="ja" ${currentLanguage === 'ja' ? 'selected' : ''}>日本語</option>
+            <option value="ko" ${currentLanguage === 'ko' ? 'selected' : ''}>한국어</option>
+            <option value="zh" ${currentLanguage === 'zh' ? 'selected' : ''}>中文</option>
+            <option value="pl" ${currentLanguage === 'pl' ? 'selected' : ''}>Polski</option>
+            <option value="nl" ${currentLanguage === 'nl' ? 'selected' : ''}>Nederlands</option>
+            <option value="hi" ${currentLanguage === 'hi' ? 'selected' : ''}>हिन्दी</option>
           </select>
         </div>
       </div>
