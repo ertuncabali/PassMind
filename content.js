@@ -94,8 +94,15 @@ function detectBrowserLanguage() {
   return 'en';
 }
 
-// Mevcut dil (Chrome dilinden veya varsayılan)
+// Mevcut dil (başlangıçta browser dilinden tespit edilir, sonra storage'dan yüklenir)
 let currentLanguage = detectBrowserLanguage();
+
+// Dil ayarını storage'dan yükle
+chrome.storage.sync.get(['language'], function(result) {
+  if (result.language && translations[result.language]) {
+    currentLanguage = result.language;
+  }
+});
 
 // Çeviri fonksiyonu
 function t(key) {
@@ -396,7 +403,10 @@ function updateDrawerTexts() {
 function changeLanguage(langCode) {
   if (translations[langCode]) {
     currentLanguage = langCode;
-    updateDrawerTexts();
+    // Storage'a kaydet
+    chrome.storage.sync.set({ language: langCode }, function() {
+      updateDrawerTexts();
+    });
   }
 }
 

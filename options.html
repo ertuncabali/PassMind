@@ -282,61 +282,100 @@
       color: #2e7d32;
       display: block;
     }
+
+    .options-language-select {
+      padding: 6px 32px 6px 8px;
+      border: 1px solid #e0e0e0;
+      border-radius: 6px;
+      font-size: 12px;
+      font-weight: 500;
+      background: white;
+      color: #333;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      appearance: none;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23666' d='M6 9L1 4h10z'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 8px center;
+      background-size: 12px;
+    }
+
+    .options-language-select:hover {
+      border-color: #667eea;
+    }
+
+    .options-language-select:focus {
+      outline: none;
+      border-color: #667eea;
+      box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+    }
   </style>
 </head>
 <body>
   <div class="container">
     <div class="header">
       <h1>🔒 Show My Password</h1>
-      <p>Extension Ayarları</p>
+      <p id="settings-title">Extension Ayarları</p>
     </div>
     
     <div class="content">
       <div class="setting-group">
-        <label class="setting-label">Tema</label>
-        <p class="setting-description">Extension'ın görünümünü seçin</p>
+        <div class="language-selector-group" style="margin-bottom: 16px; text-align: right;">
+          <select id="options-language-select" class="options-language-select">
+            <option value="en">English</option>
+            <option value="de">Deutsch</option>
+            <option value="fr">Français</option>
+            <option value="tr">Türkçe</option>
+            <option value="ar">العربية</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="setting-group">
+        <label class="setting-label" id="theme-label">Tema</label>
+        <p class="setting-description" id="theme-description">Extension'ın görünümünü seçin</p>
         <div class="theme-options">
           <div class="theme-option" data-theme="light">
             <div class="theme-option-icon">☀️</div>
-            <div class="theme-option-label">Açık</div>
+            <div class="theme-option-label" id="theme-light-label">Açık</div>
           </div>
           <div class="theme-option" data-theme="dark">
             <div class="theme-option-icon">🌙</div>
-            <div class="theme-option-label">Koyu</div>
+            <div class="theme-option-label" id="theme-dark-label">Koyu</div>
           </div>
           <div class="theme-option" data-theme="auto">
             <div class="theme-option-icon">💻</div>
-            <div class="theme-option-label">Otomatik</div>
+            <div class="theme-option-label" id="theme-auto-label">Otomatik</div>
           </div>
         </div>
       </div>
 
       <div class="setting-group">
-        <label class="setting-label">Toggle Butonu Pozisyonu</label>
-        <p class="setting-description">Drawer'ı açan butonun konumunu seçin</p>
+        <label class="setting-label" id="toggle-position-label">Toggle Butonu Pozisyonu</label>
+        <p class="setting-description" id="toggle-position-description">Drawer'ı açan butonun konumunu seçin</p>
         <div class="position-options">
           <div class="position-option" data-position="top-right">
             <div class="position-option-icon">↗️</div>
-            <div class="position-option-label">Sağ Üst</div>
+            <div class="position-option-label" id="position-top-right-label">Sağ Üst</div>
           </div>
           <div class="position-option" data-position="top-left">
             <div class="position-option-icon">↖️</div>
-            <div class="position-option-label">Sol Üst</div>
+            <div class="position-option-label" id="position-top-left-label">Sol Üst</div>
           </div>
           <div class="position-option" data-position="bottom-right">
             <div class="position-option-icon">↘️</div>
-            <div class="position-option-label">Sağ Alt</div>
+            <div class="position-option-label" id="position-bottom-right-label">Sağ Alt</div>
           </div>
           <div class="position-option" data-position="bottom-left">
             <div class="position-option-icon">↙️</div>
-            <div class="position-option-label">Sol Alt</div>
+            <div class="position-option-label" id="position-bottom-left-label">Sol Alt</div>
           </div>
         </div>
       </div>
 
       <div class="setting-group">
-        <label class="setting-label">Renk Şeması</label>
-        <p class="setting-description">Drawer ve butonlar için renk temasını seçin</p>
+        <label class="setting-label" id="color-scheme-label">Renk Şeması</label>
+        <p class="setting-description" id="color-scheme-description">Drawer ve butonlar için renk temasını seçin</p>
         <div class="color-scheme-options">
           <div class="color-scheme-option" data-scheme="purple">
             <div class="color-scheme-preview" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);"></div>
@@ -360,8 +399,8 @@
       </div>
 
       <div class="setting-group">
-        <label class="setting-label">Drawer Genişliği</label>
-        <p class="setting-description">Drawer panelinin genişliğini ayarlayın</p>
+        <label class="setting-label" id="drawer-width-label">Drawer Genişliği</label>
+        <p class="setting-description" id="drawer-width-description">Drawer panelinin genişliğini ayarlayın</p>
         <div class="width-control">
           <input type="range" id="drawer-width-slider" class="width-slider" min="280" max="600" value="380" step="10">
           <div class="width-value-display">
@@ -375,6 +414,7 @@
     </div>
   </div>
 
+  <script src="options-translations.js"></script>
   <script src="options.js"></script>
 </body>
 </html>

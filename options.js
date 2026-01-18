@@ -1,8 +1,50 @@
 // Sayfa yüklendiğinde mevcut ayarları yükle
 document.addEventListener('DOMContentLoaded', function() {
+  loadLanguage();
   loadSettings();
   setupEventListeners();
+  updatePageTexts();
 });
+
+// Dil ayarını yükle
+function loadLanguage() {
+  chrome.storage.sync.get(['language'], function(result) {
+    if (result.language) {
+      currentLanguage = result.language;
+    }
+    updateLanguageSelector();
+    updatePageTexts();
+  });
+}
+
+// Dil seçiciyi güncelle
+function updateLanguageSelector() {
+  const langSelect = document.getElementById('options-language-select');
+  if (langSelect) {
+    langSelect.value = currentLanguage;
+  }
+}
+
+// Sayfa metinlerini güncelle
+function updatePageTexts() {
+  document.getElementById('settings-title').textContent = t('settingsTitle');
+  document.getElementById('theme-label').textContent = t('theme');
+  document.getElementById('theme-description').textContent = t('themeDescription');
+  document.getElementById('theme-light-label').textContent = t('themeLight');
+  document.getElementById('theme-dark-label').textContent = t('themeDark');
+  document.getElementById('theme-auto-label').textContent = t('themeAuto');
+  document.getElementById('toggle-position-label').textContent = t('togglePosition');
+  document.getElementById('toggle-position-description').textContent = t('togglePositionDescription');
+  document.getElementById('position-top-right-label').textContent = t('positionTopRight');
+  document.getElementById('position-top-left-label').textContent = t('positionTopLeft');
+  document.getElementById('position-bottom-right-label').textContent = t('positionBottomRight');
+  document.getElementById('position-bottom-left-label').textContent = t('positionBottomLeft');
+  document.getElementById('color-scheme-label').textContent = t('colorScheme');
+  document.getElementById('color-scheme-description').textContent = t('colorSchemeDescription');
+  document.getElementById('drawer-width-label').textContent = t('drawerWidth');
+  document.getElementById('drawer-width-description').textContent = t('drawerWidthDescription');
+  document.getElementById('save-button').textContent = t('saveButton');
+}
 
 // Mevcut ayarları yükle
 function loadSettings() {
@@ -92,6 +134,17 @@ function setupEventListeners() {
     });
   });
 
+  // Dil seçici
+  const languageSelect = document.getElementById('options-language-select');
+  if (languageSelect) {
+    languageSelect.addEventListener('change', function() {
+      currentLanguage = this.value;
+      chrome.storage.sync.set({ language: currentLanguage }, function() {
+        updatePageTexts();
+      });
+    });
+  }
+
   // Drawer genişliği slider
   const drawerWidthSlider = document.getElementById('drawer-width-slider');
   const drawerWidthValue = document.getElementById('drawer-width-value');
@@ -123,7 +176,7 @@ function saveSettings() {
     drawerWidth: drawerWidth,
     colorScheme: colorScheme
   }, function() {
-    showStatusMessage('Ayarlar kaydedildi! Sayfayı yenileyerek değişiklikleri görebilirsiniz.', true);
+    showStatusMessage(t('settingsSaved'), true);
     
     // Tüm sekmelere bildirim gönder (değişiklikleri uygulasınlar)
     chrome.tabs.query({}, function(tabs) {
