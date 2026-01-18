@@ -6,9 +6,11 @@ document.addEventListener('DOMContentLoaded', function() {
 
 // Mevcut ayarları yükle
 function loadSettings() {
-  chrome.storage.sync.get(['theme'], function(result) {
+  chrome.storage.sync.get(['theme', 'togglePosition'], function(result) {
     const theme = result.theme || 'light';
+    const togglePosition = result.togglePosition || 'top-right';
     setActiveTheme(theme);
+    setActivePosition(togglePosition);
   });
 }
 
@@ -18,6 +20,17 @@ function setActiveTheme(theme) {
   options.forEach(option => {
     option.classList.remove('active');
     if (option.dataset.theme === theme) {
+      option.classList.add('active');
+    }
+  });
+}
+
+// Aktif pozisyonu göster
+function setActivePosition(position) {
+  const options = document.querySelectorAll('.position-option');
+  options.forEach(option => {
+    option.classList.remove('active');
+    if (option.dataset.position === position) {
       option.classList.add('active');
     }
   });
@@ -34,6 +47,15 @@ function setupEventListeners() {
     });
   });
 
+  // Pozisyon seçenekleri
+  const positionOptions = document.querySelectorAll('.position-option');
+  positionOptions.forEach(option => {
+    option.addEventListener('click', function() {
+      const position = this.dataset.position;
+      setActivePosition(position);
+    });
+  });
+
   // Kaydet butonu
   const saveButton = document.getElementById('save-button');
   saveButton.addEventListener('click', saveSettings);
@@ -41,16 +63,22 @@ function setupEventListeners() {
 
 // Ayarları kaydet
 function saveSettings() {
-  const activeOption = document.querySelector('.theme-option.active');
-  const theme = activeOption ? activeOption.dataset.theme : 'light';
+  const activeThemeOption = document.querySelector('.theme-option.active');
+  const activePositionOption = document.querySelector('.position-option.active');
+  const theme = activeThemeOption ? activeThemeOption.dataset.theme : 'light';
+  const togglePosition = activePositionOption ? activePositionOption.dataset.position : 'top-right';
 
-  chrome.storage.sync.set({ theme: theme }, function() {
+  chrome.storage.sync.set({ theme: theme, togglePosition: togglePosition }, function() {
     showStatusMessage('Ayarlar kaydedildi! Sayfayı yenileyerek değişiklikleri görebilirsiniz.', true);
     
     // Tüm sekmelere bildirim gönder (değişiklikleri uygulasınlar)
     chrome.tabs.query({}, function(tabs) {
       tabs.forEach(tab => {
-        chrome.tabs.sendMessage(tab.id, { action: 'themeChanged', theme: theme }).catch(() => {
+        chrome.tabs.sendMessage(tab.id, { 
+          action: 'settingsChanged', 
+          theme: theme,
+          togglePosition: togglePosition
+        }).catch(() => {
           // Hata olursa (mesela content script yüklenmemişse) sessizce geç
         });
       });

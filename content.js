@@ -404,10 +404,31 @@ function changeLanguage(langCode) {
  * Tema ayarlarını yükle ve uygula
  */
 function loadAndApplyTheme() {
-  chrome.storage.sync.get(['theme'], function(result) {
+  chrome.storage.sync.get(['theme', 'togglePosition'], function(result) {
     const theme = result.theme || 'light';
+    const togglePosition = result.togglePosition || 'top-right';
     applyTheme(theme);
+    applyTogglePosition(togglePosition);
   });
+}
+
+/**
+ * Toggle butonu pozisyonunu uygula
+ */
+function applyTogglePosition(position) {
+  const toggleBtn = document.getElementById('show-password-drawer-toggle');
+  if (!toggleBtn) return;
+  
+  // Önce tüm pozisyon class'larını kaldır
+  toggleBtn.classList.remove(
+    'show-password-toggle-top-right',
+    'show-password-toggle-top-left',
+    'show-password-toggle-bottom-right',
+    'show-password-toggle-bottom-left'
+  );
+  
+  // Yeni pozisyon class'ını ekle
+  toggleBtn.classList.add(`show-password-toggle-${position}`);
 }
 
 /**
@@ -524,10 +545,10 @@ function createDrawer() {
     return;
   }
   
-  // Toggle butonu (sağ üst köşe)
+  // Toggle butonu (pozisyon ayarı ile)
   const toggleBtn = document.createElement('button');
   toggleBtn.id = 'show-password-drawer-toggle';
-  toggleBtn.className = 'show-password-drawer-toggle';
+  toggleBtn.className = 'show-password-drawer-toggle show-password-toggle-top-right'; // Varsayılan
   toggleBtn.innerHTML = '🔒';
   toggleBtn.setAttribute('aria-label', t('openSettings'));
   
@@ -686,6 +707,13 @@ function initNotificationBar() {
 chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
   if (request.action === 'themeChanged') {
     applyTheme(request.theme);
+  } else if (request.action === 'settingsChanged') {
+    if (request.theme !== undefined) {
+      applyTheme(request.theme);
+    }
+    if (request.togglePosition !== undefined) {
+      applyTogglePosition(request.togglePosition);
+    }
   }
 });
 

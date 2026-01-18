@@ -111,6 +111,44 @@
       color: #333;
     }
 
+    .position-options {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+    }
+
+    .position-option {
+      padding: 16px;
+      border: 2px solid #e0e0e0;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      text-align: center;
+      background: white;
+    }
+
+    .position-option:hover {
+      border-color: #667eea;
+      transform: translateY(-2px);
+      box-shadow: 0 4px 8px rgba(102, 126, 234, 0.15);
+    }
+
+    .position-option.active {
+      border-color: #667eea;
+      background: linear-gradient(135deg, rgba(102, 126, 234, 0.1) 0%, rgba(118, 75, 162, 0.1) 100%);
+    }
+
+    .position-option-icon {
+      font-size: 32px;
+      margin-bottom: 8px;
+    }
+
+    .position-option-label {
+      font-size: 14px;
+      font-weight: 500;
+      color: #333;
+    }
+
     .save-button {
       width: 100%;
       padding: 14px;
@@ -173,6 +211,29 @@
           <div class="theme-option" data-theme="auto">
             <div class="theme-option-icon">💻</div>
             <div class="theme-option-label">Otomatik</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="setting-group">
+        <label class="setting-label">Toggle Butonu Pozisyonu</label>
+        <p class="setting-description">Drawer'ı açan butonun konumunu seçin</p>
+        <div class="position-options">
+          <div class="position-option" data-position="top-right">
+            <div class="position-option-icon">↗️</div>
+            <div class="position-option-label">Sağ Üst</div>
+          </div>
+          <div class="position-option" data-position="top-left">
+            <div class="position-option-icon">↖️</div>
+            <div class="position-option-label">Sol Üst</div>
+          </div>
+          <div class="position-option" data-position="bottom-right">
+            <div class="position-option-icon">↘️</div>
+            <div class="position-option-label">Sağ Alt</div>
+          </div>
+          <div class="position-option" data-position="bottom-left">
+            <div class="position-option-icon">↙️</div>
+            <div class="position-option-label">Sol Alt</div>
           </div>
         </div>
       </div>
