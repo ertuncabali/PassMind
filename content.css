@@ -478,6 +478,84 @@
   box-shadow: 0 6px 16px rgba(0, 0, 0, 0.5);
 }
 
+/* Renk Şemaları - Purple (Varsayılan) */
+.show-password-color-scheme-purple .show-password-drawer-header {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+
+.show-password-color-scheme-purple .show-password-drawer-toggle {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+
+.show-password-color-scheme-purple .show-password-global-toggle-btn {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+
+/* Renk Şemaları - Blue */
+.show-password-color-scheme-blue .show-password-drawer-header {
+  background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+}
+
+.show-password-color-scheme-blue .show-password-drawer-toggle {
+  background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+}
+
+.show-password-color-scheme-blue .show-password-global-toggle-btn {
+  background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+}
+
+/* Renk Şemaları - Green */
+.show-password-color-scheme-green .show-password-drawer-header {
+  background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);
+}
+
+.show-password-color-scheme-green .show-password-drawer-toggle {
+  background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);
+}
+
+.show-password-color-scheme-green .show-password-global-toggle-btn {
+  background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);
+}
+
+/* Renk Şemaları - Orange */
+.show-password-color-scheme-orange .show-password-drawer-header {
+  background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);
+}
+
+.show-password-color-scheme-orange .show-password-drawer-toggle {
+  background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);
+}
+
+.show-password-color-scheme-orange .show-password-global-toggle-btn {
+  background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);
+}
+
+/* Renk Şemaları - Red */
+.show-password-color-scheme-red .show-password-drawer-header {
+  background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+}
+
+.show-password-color-scheme-red .show-password-drawer-toggle {
+  background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+}
+
+.show-password-color-scheme-red .show-password-global-toggle-btn {
+  background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+}
+
+/* Renk Şemaları - Dark */
+.show-password-color-scheme-dark .show-password-drawer-header {
+  background: linear-gradient(135deg, #434343 0%, #000000 100%);
+}
+
+.show-password-color-scheme-dark .show-password-drawer-toggle {
+  background: linear-gradient(135deg, #434343 0%, #000000 100%);
+}
+
+.show-password-color-scheme-dark .show-password-global-toggle-btn {
+  background: linear-gradient(135deg, #434343 0%, #000000 100%);
+}
+
 /* Responsive */
 @media (max-width: 480px) {
   .show-password-drawer {

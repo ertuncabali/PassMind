@@ -404,14 +404,43 @@ function changeLanguage(langCode) {
  * Tema ayarlarını yükle ve uygula
  */
 function loadAndApplyTheme() {
-  chrome.storage.sync.get(['theme', 'togglePosition', 'drawerWidth'], function(result) {
+  chrome.storage.sync.get(['theme', 'togglePosition', 'drawerWidth', 'colorScheme'], function(result) {
     const theme = result.theme || 'light';
     const togglePosition = result.togglePosition || 'top-right';
     const drawerWidth = result.drawerWidth || 380;
+    const colorScheme = result.colorScheme || 'purple';
     applyTheme(theme);
     applyTogglePosition(togglePosition);
     applyDrawerWidth(drawerWidth);
+    applyColorScheme(colorScheme);
   });
+}
+
+/**
+ * Renk şemasını uygula
+ */
+function applyColorScheme(scheme) {
+  const drawer = document.getElementById('show-password-drawer');
+  const toggleBtn = document.getElementById('show-password-drawer-toggle');
+  
+  // Tüm renk şeması class'larını kaldır
+  const schemes = ['purple', 'blue', 'green', 'orange', 'red', 'dark'];
+  schemes.forEach(s => {
+    if (drawer) {
+      drawer.classList.remove(`show-password-color-scheme-${s}`);
+    }
+    if (toggleBtn) {
+      toggleBtn.classList.remove(`show-password-color-scheme-${s}`);
+    }
+  });
+  
+  // Yeni renk şeması class'ını ekle
+  if (drawer) {
+    drawer.classList.add(`show-password-color-scheme-${scheme}`);
+  }
+  if (toggleBtn) {
+    toggleBtn.classList.add(`show-password-color-scheme-${scheme}`);
+  }
 }
 
 /**
@@ -756,6 +785,9 @@ chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
     }
     if (request.drawerWidth !== undefined) {
       applyDrawerWidth(request.drawerWidth);
+    }
+    if (request.colorScheme !== undefined) {
+      applyColorScheme(request.colorScheme);
     }
   }
 });

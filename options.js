@@ -6,13 +6,26 @@ document.addEventListener('DOMContentLoaded', function() {
 
 // Mevcut ayarları yükle
 function loadSettings() {
-  chrome.storage.sync.get(['theme', 'togglePosition', 'drawerWidth'], function(result) {
+  chrome.storage.sync.get(['theme', 'togglePosition', 'drawerWidth', 'colorScheme'], function(result) {
     const theme = result.theme || 'light';
     const togglePosition = result.togglePosition || 'top-right';
     const drawerWidth = result.drawerWidth || 380;
+    const colorScheme = result.colorScheme || 'purple';
     setActiveTheme(theme);
     setActivePosition(togglePosition);
     setDrawerWidth(drawerWidth);
+    setActiveColorScheme(colorScheme);
+  });
+}
+
+// Aktif renk şemasını göster
+function setActiveColorScheme(scheme) {
+  const options = document.querySelectorAll('.color-scheme-option');
+  options.forEach(option => {
+    option.classList.remove('active');
+    if (option.dataset.scheme === scheme) {
+      option.classList.add('active');
+    }
   });
 }
 
@@ -70,6 +83,15 @@ function setupEventListeners() {
     });
   });
 
+  // Renk şeması seçenekleri
+  const colorSchemeOptions = document.querySelectorAll('.color-scheme-option');
+  colorSchemeOptions.forEach(option => {
+    option.addEventListener('click', function() {
+      const scheme = this.dataset.scheme;
+      setActiveColorScheme(scheme);
+    });
+  });
+
   // Drawer genişliği slider
   const drawerWidthSlider = document.getElementById('drawer-width-slider');
   const drawerWidthValue = document.getElementById('drawer-width-value');
@@ -88,15 +110,18 @@ function setupEventListeners() {
 function saveSettings() {
   const activeThemeOption = document.querySelector('.theme-option.active');
   const activePositionOption = document.querySelector('.position-option.active');
+  const activeColorSchemeOption = document.querySelector('.color-scheme-option.active');
   const drawerWidthSlider = document.getElementById('drawer-width-slider');
   const theme = activeThemeOption ? activeThemeOption.dataset.theme : 'light';
   const togglePosition = activePositionOption ? activePositionOption.dataset.position : 'top-right';
+  const colorScheme = activeColorSchemeOption ? activeColorSchemeOption.dataset.scheme : 'purple';
   const drawerWidth = drawerWidthSlider ? parseInt(drawerWidthSlider.value) : 380;
 
   chrome.storage.sync.set({ 
     theme: theme, 
     togglePosition: togglePosition,
-    drawerWidth: drawerWidth
+    drawerWidth: drawerWidth,
+    colorScheme: colorScheme
   }, function() {
     showStatusMessage('Ayarlar kaydedildi! Sayfayı yenileyerek değişiklikleri görebilirsiniz.', true);
     
@@ -107,7 +132,8 @@ function saveSettings() {
           action: 'settingsChanged', 
           theme: theme,
           togglePosition: togglePosition,
-          drawerWidth: drawerWidth
+          drawerWidth: drawerWidth,
+          colorScheme: colorScheme
         }).catch(() => {
           // Hata olursa (mesela content script yüklenmemişse) sessizce geç
         });
