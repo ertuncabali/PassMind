@@ -256,6 +256,44 @@
   display: flex;
   justify-content: flex-end;
   align-items: center;
+  gap: 12px;
+}
+
+/* Theme Toggle Button */
+.theme-toggle-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px;
+  background: white;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  width: 40px;
+  height: 40px;
+  line-height: 1;
+}
+
+.theme-toggle-btn:hover {
+  border-color: #667eea;
+  box-shadow: 0 4px 8px rgba(102, 126, 234, 0.15);
+  transform: translateY(-1px);
+}
+
+.theme-toggle-btn:active {
+  transform: translateY(0);
+}
+
+.theme-icon {
+  font-size: 18px;
+  line-height: 1;
+  transition: transform 0.3s ease;
+}
+
+.theme-toggle-btn:hover .theme-icon {
+  transform: rotate(15deg);
 }
 
 .language-select-wrapper {
@@ -399,6 +437,15 @@
 
 .show-password-drawer.show-password-dark-theme .language-select-compact:focus {
   color: #8b9aff;
+}
+
+.show-password-drawer.show-password-dark-theme .theme-toggle-btn {
+  background: #2a2a2a;
+  border-color: #3a3a3a;
+}
+
+.show-password-drawer.show-password-dark-theme .theme-toggle-btn:hover {
+  border-color: #667eea;
 }
 
 /* Dark theme için toggle button */

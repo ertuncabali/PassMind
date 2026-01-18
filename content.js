@@ -442,6 +442,72 @@ function applyTheme(theme) {
       toggleBtn.classList.remove('show-password-dark-theme');
     }
   }
+  
+  // Tema toggle buton icon'unu güncelle
+  updateThemeToggleIcon();
+}
+
+/**
+ * Tema toggle buton icon'unu güncelle
+ */
+function updateThemeToggleIcon() {
+  const themeToggleBtn = document.getElementById('theme-toggle-btn');
+  if (!themeToggleBtn) return;
+  
+  const themeIcon = themeToggleBtn.querySelector('.theme-icon');
+  if (!themeIcon) return;
+  
+  // Mevcut temaya göre icon göster
+  chrome.storage.sync.get(['theme'], function(result) {
+    const theme = result.theme || 'light';
+    let actualTheme = theme;
+    
+    if (theme === 'auto') {
+      const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+      actualTheme = prefersDark ? 'dark' : 'light';
+    }
+    
+    // Dark moddaysa güneş, light moddaysa ay ikonu göster
+    if (actualTheme === 'dark') {
+      themeIcon.textContent = '☀️';
+    } else {
+      themeIcon.textContent = '🌙';
+    }
+  });
+}
+
+/**
+ * Tema toggle (light <-> dark arasında geçiş)
+ */
+function toggleTheme() {
+  chrome.storage.sync.get(['theme'], function(result) {
+    const currentStoredTheme = result.theme || 'light';
+    let newTheme;
+    
+    // Eğer auto moddaysa, mevcut sistem temasına göre değiştir
+    if (currentStoredTheme === 'auto') {
+      const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+      newTheme = prefersDark ? 'light' : 'dark';
+    } else if (currentStoredTheme === 'dark') {
+      newTheme = 'light';
+    } else {
+      newTheme = 'dark';
+    }
+    
+    // Yeni temayı kaydet
+    chrome.storage.sync.set({ theme: newTheme }, function() {
+      applyTheme(newTheme);
+      
+      // Tüm sekmelere bildirim gönder
+      chrome.tabs.query({}, function(tabs) {
+        tabs.forEach(tab => {
+          chrome.tabs.sendMessage(tab.id, { action: 'themeChanged', theme: newTheme }).catch(() => {
+            // Hata olursa sessizce geç
+          });
+        });
+      });
+    });
+  });
 }
 
 /**
@@ -504,6 +570,9 @@ function createDrawer() {
       </div>
       
       <div class="show-password-language-section">
+        <button id="theme-toggle-btn" class="theme-toggle-btn" aria-label="Toggle theme">
+          <span class="theme-icon">🌙</span>
+        </button>
         <div class="language-select-wrapper">
           <span class="language-icon">🌐</span>
           <select id="language-select" class="language-select-compact">
@@ -578,6 +647,18 @@ function createDrawer() {
   languageSelect.addEventListener('change', function(e) {
     changeLanguage(this.value);
   });
+  
+  // Tema toggle butonu
+  const themeToggleBtn = drawer.querySelector('#theme-toggle-btn');
+  if (themeToggleBtn) {
+    // İlk yüklemede icon'u güncelle
+    setTimeout(() => updateThemeToggleIcon(), 100);
+    themeToggleBtn.addEventListener('click', function(e) {
+      e.preventDefault();
+      e.stopPropagation();
+      toggleTheme();
+    });
+  }
 }
 
 /**
