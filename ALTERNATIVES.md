@@ -1,6 +1,6 @@
 # Alternatif Tasarım Yaklaşımları
 
-Bu dosya, Show My Password extension için alternatif tasarım ve uygulama yaklaşımlarını içerir.
+Bu dosya, PassMind extension için alternatif tasarım ve uygulama yaklaşımlarını içerir.
 
 ## Mevcut Yaklaşım: Wrapper Tabanlı (Önerilen)
 

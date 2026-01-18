@@ -1,4 +1,4 @@
-# Show My Password - Özellik Geliştirme ve Monetizasyon Planı
+# PassMind - Özellik Geliştirme ve Monetizasyon Planı
 
 ## Mevcut Durum Analizi
 

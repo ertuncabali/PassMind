@@ -1,6 +1,6 @@
 {
   "manifest_version": 3,
-  "name": "Show My Password",
+  "name": "PassMind",
   "version": "1.0.0",
   "description": "Password input alanlarının yanında şifre göster/gizle toggle butonu ekler",
   "permissions": [

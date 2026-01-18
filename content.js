@@ -500,7 +500,7 @@ function updateDrawerTexts() {
   if (!drawer) return;
   
   // Başlık - sabit kalır (extension adı)
-  // title.textContent değiştirilmiyor, çünkü "Show My Password" sabit kalmalı
+  // title.textContent değiştirilmiyor, çünkü "PassMind" sabit kalmalı
   
   // Kapat butonu
   const closeBtn = drawer.querySelector('#drawer-close-btn');
@@ -760,7 +760,7 @@ function createDrawer() {
   
   drawer.innerHTML = `
     <div class="show-password-drawer-header">
-      <h3 class="show-password-drawer-title">🔒 Show My Password</h3>
+      <h3 class="show-password-drawer-title">🔒 PassMind</h3>
       <button id="drawer-close-btn" class="show-password-drawer-close" aria-label="${t('close')}">×</button>
     </div>
     <div class="show-password-drawer-content">

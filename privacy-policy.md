@@ -1,6 +1,6 @@
 # Privacy Policy
 
-## Show My Password Chrome Extension
+## PassMind Chrome Extension
 
 **Son güncelleme:** 2025
 

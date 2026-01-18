@@ -1,4 +1,4 @@
-# Show My Password Chrome Extension
+# PassMind Chrome Extension
 
 Password input alanlarının yanında şifre göster/gizle toggle butonu ekleyen basit Chrome extension.
 
