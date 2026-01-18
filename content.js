@@ -111,6 +111,9 @@ let globalPasswordVisible = false;
 // Sayfadaki tüm password inputlarının listesi (type değişse bile hafızada tutulur)
 const passwordInputsList = new WeakSet();
 
+// Mevcut tema (varsayılan: light)
+let currentTheme = 'light';
+
 /**
  * Sayfada password input var mı kontrol eder (listeye göre)
  * Wrapper varlığına bakarak kontrol eder - çünkü wrapper olan her input 
@@ -398,6 +401,50 @@ function changeLanguage(langCode) {
 }
 
 /**
+ * Tema ayarlarını yükle ve uygula
+ */
+function loadAndApplyTheme() {
+  chrome.storage.sync.get(['theme'], function(result) {
+    const theme = result.theme || 'light';
+    applyTheme(theme);
+  });
+}
+
+/**
+ * Tema uygula (light/dark/auto)
+ */
+function applyTheme(theme) {
+  currentTheme = theme;
+  
+  // Auto modda sistem tercihini kontrol et
+  let actualTheme = theme;
+  if (theme === 'auto') {
+    const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+    actualTheme = prefersDark ? 'dark' : 'light';
+  }
+  
+  // Drawer varsa tema class'ını uygula
+  const drawer = document.getElementById('show-password-drawer');
+  const toggleBtn = document.getElementById('show-password-drawer-toggle');
+  
+  if (drawer) {
+    if (actualTheme === 'dark') {
+      drawer.classList.add('show-password-dark-theme');
+    } else {
+      drawer.classList.remove('show-password-dark-theme');
+    }
+  } 
+  
+  if (toggleBtn) {
+    if (actualTheme === 'dark') {
+      toggleBtn.classList.add('show-password-dark-theme');
+    } else {
+      toggleBtn.classList.remove('show-password-dark-theme');
+    }
+  }
+}
+
+/**
  * Drawer'ı oluştur (sağ üstte buton + sağdan açılan panel)
  */
 function createDrawer() {
@@ -479,6 +526,9 @@ function createDrawer() {
       
       // Drawer içeriğini güncelle
       updateDrawerContent();
+      
+      // Tema yükle ve uygula
+      loadAndApplyTheme();
     }
   };
   
@@ -539,13 +589,32 @@ function createNotificationBar() {
 
 // Bildirim bar'ı oluştur (password input bulunduktan sonra)
 function initNotificationBar() {
-  // Önce password inputları işle, sonra bildirim bar'ı oluştur
+  // Önce tema yükle
+  loadAndApplyTheme();
+  
+  // Sonra password inputları işle, sonra bildirim bar'ı oluştur
   processPasswordInputs();
   
   // Password input var mı kontrol et (listeye göre)
   if (hasPasswordInput()) {
     createNotificationBar();
   }
+}
+
+// Tema değişikliklerini dinle (options sayfasından gelen mesajlar)
+chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
+  if (request.action === 'themeChanged') {
+    applyTheme(request.theme);
+  }
+});
+
+// Sistem tema tercihini dinle (auto mod için)
+if (window.matchMedia) {
+  window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', function() {
+    if (currentTheme === 'auto') {
+      applyTheme('auto');
+    }
+  });
 }
 
 // Sayfa yüklendiğinde veya password input bulunduğunda bildirim bar'ı oluştur

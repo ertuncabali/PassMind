@@ -4,8 +4,10 @@
   "version": "1.0.0",
   "description": "Password input alanlarının yanında şifre göster/gizle toggle butonu ekler",
   "permissions": [
-    "activeTab"
+    "activeTab",
+    "storage"
   ],
+  "options_page": "options.html",
   "content_scripts": [
     {
       "matches": ["<all_urls>"],

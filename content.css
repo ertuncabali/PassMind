@@ -342,6 +342,76 @@
   color: #4caf50;
 }
 
+/* Dark Theme Styles */
+.show-password-drawer.show-password-dark-theme {
+  background: #1e1e1e;
+  color: #e0e0e0;
+}
+
+.show-password-drawer.show-password-dark-theme .show-password-drawer-content {
+  background: #1e1e1e;
+  color: #e0e0e0;
+}
+
+.show-password-drawer.show-password-dark-theme .show-password-detail-text {
+  background: #2a2a2a;
+  border: 1px solid #3a3a3a;
+}
+
+.show-password-drawer.show-password-dark-theme .stat-label {
+  color: #b0b0b0;
+}
+
+.show-password-drawer.show-password-dark-theme .stat-value {
+  color: #8b9aff;
+}
+
+.show-password-drawer.show-password-dark-theme .status-label {
+  color: #b0b0b0;
+}
+
+.show-password-drawer.show-password-dark-theme .show-password-status-section {
+  border-top-color: #3a3a3a;
+}
+
+.show-password-drawer.show-password-dark-theme .show-password-language-section {
+  background: linear-gradient(to top, #252525 0%, #2a2a2a 100%);
+  border-top-color: #3a3a3a;
+}
+
+.show-password-drawer.show-password-dark-theme .language-select-wrapper {
+  background: #2a2a2a;
+  border-color: #3a3a3a;
+}
+
+.show-password-drawer.show-password-dark-theme .language-select-wrapper:hover {
+  border-color: #667eea;
+}
+
+.show-password-drawer.show-password-dark-theme .language-select-compact {
+  color: #e0e0e0;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23b0b0b0' d='M6 9L1 4h10z'/%3E%3C/svg%3E");
+}
+
+.show-password-drawer.show-password-dark-theme .language-select-compact:hover {
+  color: #8b9aff;
+}
+
+.show-password-drawer.show-password-dark-theme .language-select-compact:focus {
+  color: #8b9aff;
+}
+
+/* Dark theme için toggle button */
+.show-password-drawer-toggle.show-password-dark-theme {
+  background: linear-gradient(135deg, #4a4a4a 0%, #2a2a2a 100%);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+}
+
+.show-password-drawer-toggle.show-password-dark-theme:hover {
+  background: linear-gradient(135deg, #5a5a5a 0%, #3a3a3a 100%);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.5);
+}
+
 /* Responsive */
 @media (max-width: 480px) {
   .show-password-drawer {
