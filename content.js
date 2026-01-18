@@ -404,12 +404,32 @@ function changeLanguage(langCode) {
  * Tema ayarlarını yükle ve uygula
  */
 function loadAndApplyTheme() {
-  chrome.storage.sync.get(['theme', 'togglePosition'], function(result) {
+  chrome.storage.sync.get(['theme', 'togglePosition', 'drawerWidth'], function(result) {
     const theme = result.theme || 'light';
     const togglePosition = result.togglePosition || 'top-right';
+    const drawerWidth = result.drawerWidth || 380;
     applyTheme(theme);
     applyTogglePosition(togglePosition);
+    applyDrawerWidth(drawerWidth);
   });
+}
+
+/**
+ * Drawer genişliğini uygula
+ */
+function applyDrawerWidth(width) {
+  const drawer = document.getElementById('show-password-drawer');
+  if (!drawer) return;
+  
+  // Drawer genişliğini ayarla
+  drawer.style.width = width + 'px';
+  
+  // Kapalı durum için right değerini ayarla
+  // Eğer drawer açık değilse, right değerini güncelle
+  if (!drawer.classList.contains('show-password-drawer-open')) {
+    drawer.style.right = `-${width + 20}px`;
+  }
+  // Drawer açıkken right: 0 olacak (CSS class ile), bu yüzden şimdi ayarlamıyoruz
 }
 
 /**
@@ -634,7 +654,19 @@ function createDrawer() {
   toggleBtn.addEventListener('click', function(e) {
     e.preventDefault();
     e.stopPropagation();
+    const isOpening = !drawer.classList.contains('show-password-drawer-open');
     drawer.classList.toggle('show-password-drawer-open');
+    
+    // Drawer açılıyorsa inline right style'ını kaldır (CSS class right: 0 uygulansın)
+    // Drawer kapanıyorsa right değerini tekrar ayarla
+    if (isOpening) {
+      drawer.style.right = '';
+    } else {
+      // Drawer genişliğini al ve right değerini ayarla
+      const drawerWidth = parseInt(drawer.style.width) || 380;
+      drawer.style.right = `-${drawerWidth + 20}px`;
+    }
+    
     updateDrawerContent();
   });
   
@@ -644,12 +676,20 @@ function createDrawer() {
     e.preventDefault();
     e.stopPropagation();
     drawer.classList.remove('show-password-drawer-open');
+    
+    // Drawer genişliğini al ve right değerini ayarla
+    const drawerWidth = parseInt(drawer.style.width) || 380;
+    drawer.style.right = `-${drawerWidth + 20}px`;
   });
   
   // Drawer dışına tıklanınca kapat
   drawer.addEventListener('click', function(e) {
     if (e.target === drawer) {
       drawer.classList.remove('show-password-drawer-open');
+      
+      // Drawer genişliğini al ve right değerini ayarla
+      const drawerWidth = parseInt(drawer.style.width) || 380;
+      drawer.style.right = `-${drawerWidth + 20}px`;
     }
   });
   
@@ -713,6 +753,9 @@ chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
     }
     if (request.togglePosition !== undefined) {
       applyTogglePosition(request.togglePosition);
+    }
+    if (request.drawerWidth !== undefined) {
+      applyDrawerWidth(request.drawerWidth);
     }
   }
 });

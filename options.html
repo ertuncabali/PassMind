@@ -149,6 +149,69 @@
       color: #333;
     }
 
+    .width-control {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .width-slider {
+      width: 100%;
+      height: 6px;
+      border-radius: 3px;
+      background: #e0e0e0;
+      outline: none;
+      -webkit-appearance: none;
+      appearance: none;
+      cursor: pointer;
+    }
+
+    .width-slider::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      appearance: none;
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      cursor: pointer;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+      transition: all 0.2s ease;
+    }
+
+    .width-slider::-webkit-slider-thumb:hover {
+      transform: scale(1.1);
+      box-shadow: 0 3px 6px rgba(102, 126, 234, 0.3);
+    }
+
+    .width-slider::-moz-range-thumb {
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      cursor: pointer;
+      border: none;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+      transition: all 0.2s ease;
+    }
+
+    .width-slider::-moz-range-thumb:hover {
+      transform: scale(1.1);
+      box-shadow: 0 3px 6px rgba(102, 126, 234, 0.3);
+    }
+
+    .width-value-display {
+      text-align: center;
+      font-size: 14px;
+      color: #666;
+      font-weight: 500;
+    }
+
+    .width-value-display span {
+      color: #667eea;
+      font-weight: 600;
+      font-size: 16px;
+    }
+
     .save-button {
       width: 100%;
       padding: 14px;
@@ -234,6 +297,17 @@
           <div class="position-option" data-position="bottom-left">
             <div class="position-option-icon">↙️</div>
             <div class="position-option-label">Sol Alt</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="setting-group">
+        <label class="setting-label">Drawer Genişliği</label>
+        <p class="setting-description">Drawer panelinin genişliğini ayarlayın</p>
+        <div class="width-control">
+          <input type="range" id="drawer-width-slider" class="width-slider" min="280" max="600" value="380" step="10">
+          <div class="width-value-display">
+            <span id="drawer-width-value">380</span>px
           </div>
         </div>
       </div>

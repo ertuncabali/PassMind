@@ -124,7 +124,7 @@
 }
 
 .show-password-drawer-open {
-  right: 0;
+  right: 0 !important;
 }
 
 /* Drawer Overlay (Arka plan karartma) */

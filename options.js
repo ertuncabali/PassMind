@@ -6,12 +6,26 @@ document.addEventListener('DOMContentLoaded', function() {
 
 // Mevcut ayarları yükle
 function loadSettings() {
-  chrome.storage.sync.get(['theme', 'togglePosition'], function(result) {
+  chrome.storage.sync.get(['theme', 'togglePosition', 'drawerWidth'], function(result) {
     const theme = result.theme || 'light';
     const togglePosition = result.togglePosition || 'top-right';
+    const drawerWidth = result.drawerWidth || 380;
     setActiveTheme(theme);
     setActivePosition(togglePosition);
+    setDrawerWidth(drawerWidth);
   });
+}
+
+// Drawer genişliğini ayarla
+function setDrawerWidth(width) {
+  const slider = document.getElementById('drawer-width-slider');
+  const valueDisplay = document.getElementById('drawer-width-value');
+  if (slider) {
+    slider.value = width;
+  }
+  if (valueDisplay) {
+    valueDisplay.textContent = width;
+  }
 }
 
 // Aktif temayı göster
@@ -56,6 +70,15 @@ function setupEventListeners() {
     });
   });
 
+  // Drawer genişliği slider
+  const drawerWidthSlider = document.getElementById('drawer-width-slider');
+  const drawerWidthValue = document.getElementById('drawer-width-value');
+  if (drawerWidthSlider && drawerWidthValue) {
+    drawerWidthSlider.addEventListener('input', function() {
+      drawerWidthValue.textContent = this.value;
+    });
+  }
+
   // Kaydet butonu
   const saveButton = document.getElementById('save-button');
   saveButton.addEventListener('click', saveSettings);
@@ -65,10 +88,16 @@ function setupEventListeners() {
 function saveSettings() {
   const activeThemeOption = document.querySelector('.theme-option.active');
   const activePositionOption = document.querySelector('.position-option.active');
+  const drawerWidthSlider = document.getElementById('drawer-width-slider');
   const theme = activeThemeOption ? activeThemeOption.dataset.theme : 'light';
   const togglePosition = activePositionOption ? activePositionOption.dataset.position : 'top-right';
+  const drawerWidth = drawerWidthSlider ? parseInt(drawerWidthSlider.value) : 380;
 
-  chrome.storage.sync.set({ theme: theme, togglePosition: togglePosition }, function() {
+  chrome.storage.sync.set({ 
+    theme: theme, 
+    togglePosition: togglePosition,
+    drawerWidth: drawerWidth
+  }, function() {
     showStatusMessage('Ayarlar kaydedildi! Sayfayı yenileyerek değişiklikleri görebilirsiniz.', true);
     
     // Tüm sekmelere bildirim gönder (değişiklikleri uygulasınlar)
@@ -77,7 +106,8 @@ function saveSettings() {
         chrome.tabs.sendMessage(tab.id, { 
           action: 'settingsChanged', 
           theme: theme,
-          togglePosition: togglePosition
+          togglePosition: togglePosition,
+          drawerWidth: drawerWidth
         }).catch(() => {
           // Hata olursa (mesela content script yüklenmemişse) sessizce geç
         });
