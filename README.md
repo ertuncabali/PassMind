@@ -1,12 +1,13 @@
 # PassMind Chrome Extension
 
-Password input alanlarının yanında şifre göster/gizle toggle butonu ekleyen basit Chrome extension.
+Ekranın köşesindeki buton ile drawer üzerinden password alanlarını göster/gizle özelliği sunan basit Chrome extension.
 
 ## Özellikler
 
 - Tüm web sayfalarında otomatik çalışır
-- Password input alanlarının yanında göz ikonu butonu ekler
-- Tek tıkla şifre göster/gizle (toggle)
+- Sayfada password input alanı olduğunda ekranın köşesinde 🔒 butonu görünür
+- Drawer panel ile tüm password alanlarını tek seferde göster/gizle
+- Buton pozisyonu ayarlanabilir (sağ üst/alt, sol üst/alt)
 - Dinamik olarak eklenen password inputları da destekler
 - Hiçbir veri saklamaz veya API çağrısı yapmaz
 
@@ -19,17 +20,17 @@ Password input alanlarının yanında şifre göster/gizle toggle butonu ekleyen
 
 ## Kullanım
 
-Extension yüklendikten sonra herhangi bir web sayfasında password input alanının yanında bir göz ikonu görünecektir. İkona tıklayarak şifreyi görünür/gizli yapabilirsiniz.
+Extension yüklendikten sonra herhangi bir web sayfasında password input alanı olduğunda ekranın köşesinde (varsayılan: sağ üst) 🔒 butonu görünecektir. Butona tıklayarak drawer panelini açın ve tüm şifreleri tek seferde göster/gizle yapabilirsiniz.
 
-- Kapalı göz ikonu: Şifre gizli
-- Açık göz ikonu: Şifre görünür
+- Drawer açık: Tüm password alanlarını göster/gizle kontrolü
+- Drawer kapalı: Buton köşede gizli durumda
 
 ## Geliştirme
 
 ### Dosya Yapısı
 
 ```
-showmypassord/
+PassMind/
 ├── manifest.json       # Extension yapılandırması
 ├── content.js          # Ana script (password input tespiti ve buton ekleme)
 ├── content.css         # Buton stilleri
@@ -52,8 +53,8 @@ Extension'ı test etmek için:
 
 1. Extension'ı yükleyin (yukarıdaki kurulum adımlarına bakın)
 2. Herhangi bir login sayfasına gidin (örn: GitHub, Google)
-3. Password input alanının yanında göz ikonunu kontrol edin
-4. İkona tıklayarak şifreyi göster/gizle fonksiyonunu test edin
+3. Ekranın köşesinde (varsayılan: sağ üst) 🔒 butonunu kontrol edin
+4. Butona tıklayarak drawer'ı açın ve "Show All" / "Hide All" butonlarıyla şifre göster/gizle fonksiyonunu test edin
 
 ## Lisans
 

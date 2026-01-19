@@ -51,7 +51,7 @@ git push -u origin main
 `privacy-policy.html` dosyasını repository'nin root klasörüne yerleştirin:
 
 ```
-showmypassord/
+PassMind/
 ├── privacy-policy.html  ← Bu dosya burada olmalı
 ├── manifest.json
 ├── content.js
@@ -63,7 +63,7 @@ showmypassord/
 Alternatif olarak, bir `docs` klasörü oluşturup oraya koyabilirsiniz:
 
 ```
-showmypassord/
+PassMind/
 ├── docs/
 │   └── privacy-policy.html  ← Bu dosya burada
 ├── manifest.json
@@ -130,7 +130,7 @@ https://KULLANICI_ADI.github.io/REPO_ADI/privacy-policy.html
 
 **Örnek:**
 ```
-https://johndoe.github.io/showmypassord/privacy-policy.html
+https://johndoe.github.io/PassMind/privacy-policy.html
 ```
 
 ---
