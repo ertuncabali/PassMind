@@ -65,7 +65,7 @@ Chrome Web Store'a yayınlamak için gerekli hazırlıklar ve adımlar:
 **Eylem:**
 - Store listing açıklamalarını hazırlama dosyası oluşturma
 
-## Adım 4: Manifest.json Kontrolü ve Optimizasyonu
+## Adım 4: Manifest.json Kontrolü ve Optimizasyonu ✅
 
 **Kontrol edilecekler:**
 
@@ -73,19 +73,24 @@ Chrome Web Store'a yayınlamak için gerekli hazırlıklar ve adımlar:
    - Mevcut: `1.0.0` ✓
 
 2. **Description:**
-   - Store listing ile uyumlu olmalı
+   - İngilizce (global); store listing ile uyumlu ✓
 
 3. **Permissions:**
    - `activeTab` ve `storage` - minimal ve uygun ✓
+   - `chrome.tabs` (query, sendMessage): "tabs" izni gerekmez; sadece tab id kullanılıyor ✓
 
 4. **Icons:**
    - 16, 48, 128 piksel mevcut ✓
 
 5. **Optional permissions (varsa):**
-   - Bildirilmeli
+   - Kullanılmıyor ✓
 
-**Eylem:**
-- `manifest.json` dosyasını Chrome Web Store standartlarına göre kontrol etme
+**Yapılan optimizasyonlar:**
+- `description` ve `action.default_title`: İngilizce (tek dil = global kullanım)
+- `minimum_chrome_version`: `"88"` eklendi (MV3 için asgari Chrome)
+- `action`: Toolbar ikonu ve `default_title` eklendi (uzantı çubuğunda görünürlük)
+- `content_scripts.exclude_matches`: `https://chrome.google.com/webstore/*` eklendi (Chrome Web Store’da content script çalıştırılmaz)
+- `run_at`: `document_idle` (varsayılan, performans için uygun)
 
 ## Adım 5: Chrome Developer Hesabı
 
