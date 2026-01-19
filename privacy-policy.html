@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="PassMind Chrome Extension Gizlilik Politikası - Privacy Policy">
+    <title>PassMind - Gizlilik Politikası / Privacy Policy</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-color: #2563eb;
+            --secondary-color: #1e40af;
+            --text-color: #1f2937;
+            --text-light: #6b7280;
+            --bg-color: #ffffff;
+            --bg-light: #f9fafb;
+            --border-color: #e5e7eb;
+            --success-color: #10b981;
+            --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: var(--bg-light);
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 2rem 1rem;
+        }
+
+        header {
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            color: white;
+            padding: 3rem 1rem;
+            text-align: center;
+            box-shadow: var(--shadow-lg);
+            margin-bottom: 2rem;
+        }
+
+        header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+            font-weight: 700;
+        }
+
+        header p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+
+        .content {
+            background: var(--bg-color);
+            padding: 3rem;
+            border-radius: 12px;
+            box-shadow: var(--shadow);
+            margin-bottom: 2rem;
+        }
+
+        .meta-info {
+            background: var(--bg-light);
+            padding: 1rem;
+            border-radius: 8px;
+            border-left: 4px solid var(--primary-color);
+            margin-bottom: 2rem;
+        }
+
+        .meta-info p {
+            margin: 0.25rem 0;
+            color: var(--text-light);
+            font-size: 0.95rem;
+        }
+
+        h2 {
+            color: var(--primary-color);
+            font-size: 1.75rem;
+            margin-top: 2.5rem;
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--border-color);
+        }
+
+        h2:first-of-type {
+            margin-top: 0;
+        }
+
+        h3 {
+            color: var(--text-color);
+            font-size: 1.3rem;
+            margin-top: 1.5rem;
+            margin-bottom: 0.75rem;
+        }
+
+        p {
+            margin-bottom: 1rem;
+            text-align: justify;
+        }
+
+        ul, ol {
+            margin: 1rem 0;
+            padding-left: 2rem;
+        }
+
+        li {
+            margin-bottom: 0.5rem;
+            line-height: 1.8;
+        }
+
+        .check-item {
+            list-style: none;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        .check-item::before {
+            content: "✅";
+            position: absolute;
+            left: 0;
+        }
+
+        .cross-item {
+            list-style: none;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        .cross-item::before {
+            content: "❌";
+            position: absolute;
+            left: 0;
+        }
+
+        .highlight-box {
+            background: #eff6ff;
+            border: 1px solid #bfdbfe;
+            border-left: 4px solid var(--primary-color);
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 1.5rem 0;
+        }
+
+        .language-switcher {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: white;
+            padding: 0.5rem 1rem;
+            border-radius: 25px;
+            box-shadow: var(--shadow);
+            z-index: 1000;
+        }
+
+        .language-switcher button {
+            background: none;
+            border: none;
+            color: var(--primary-color);
+            cursor: pointer;
+            padding: 0.25rem 0.75rem;
+            font-size: 0.9rem;
+            font-weight: 600;
+            transition: opacity 0.2s;
+        }
+
+        .language-switcher button:hover {
+            opacity: 0.7;
+        }
+
+        .language-switcher button.active {
+            background: var(--primary-color);
+            color: white;
+            border-radius: 15px;
+        }
+
+        .language-section {
+            display: none;
+        }
+
+        .language-section.active {
+            display: block;
+        }
+
+        footer {
+            text-align: center;
+            padding: 2rem;
+            color: var(--text-light);
+            font-size: 0.9rem;
+        }
+
+        hr {
+            border: none;
+            border-top: 2px solid var(--border-color);
+            margin: 3rem 0;
+        }
+
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 1.8rem;
+            }
+
+            .content {
+                padding: 1.5rem;
+            }
+
+            .language-switcher {
+                position: relative;
+                top: auto;
+                right: auto;
+                display: inline-block;
+                margin-bottom: 1rem;
+            }
+        }
+
+        a {
+            color: var(--primary-color);
+            text-decoration: none;
+            border-bottom: 1px solid transparent;
+            transition: border-color 0.2s;
+        }
+
+        a:hover {
+            border-bottom-color: var(--primary-color);
+        }
+    </style>
+</head>
+<body>
+    <div class="language-switcher">
+        <button onclick="switchLanguage('tr')" id="btn-tr" class="active">TR</button>
+        <button onclick="switchLanguage('en')" id="btn-en">EN</button>
+    </div>
+
+    <header>
+        <h1>🔒 Gizlilik Politikası</h1>
+        <p>PassMind Chrome Uzantısı</p>
+    </header>
+
+    <div class="container">
+        <div class="content">
+            <!-- Turkish Version -->
+            <div id="section-tr" class="language-section active">
+                <div class="meta-info">
+                    <p><strong>Son Güncelleme Tarihi:</strong> 1 Ocak 2025</p>
+                    <p><strong>Geçerlilik Tarihi:</strong> 1 Ocak 2025</p>
+                </div>
+
+                <h2>1. Giriş</h2>
+                <p>PassMind Chrome Uzantısı ("Uzantı", "Biz", "Bizim") olarak, kullanıcı gizliliğini korumayı en önemli önceliğimiz olarak görüyoruz. Bu Gizlilik Politikası, PassMind Chrome Uzantısının veri toplama, kullanma ve koruma uygulamalarını açıklamaktadır.</p>
+                <p>Bu uzantıyı kullanarak, bu Gizlilik Politikası'nda açıklanan uygulamalara kabul etmiş olursunuz.</p>
+
+                <h2>2. Veri Toplama ve İşleme</h2>
+                
+                <h3>2.1 Toplanan Veriler</h3>
+                <div class="highlight-box">
+                    <p><strong>PassMind Chrome Uzantısı hiçbir kişisel veri toplamaz, saklamaz veya işlemez.</strong></p>
+                </div>
+                <p>Uzantı aşağıdaki veri türlerini kesinlikle toplamaz veya işlemez:</p>
+                <ul>
+                    <li>Şifreler veya kimlik bilgileri</li>
+                    <li>Kişisel kimlik bilgileri (PII)</li>
+                    <li>Tarama geçmişi</li>
+                    <li>Konum bilgisi</li>
+                    <li>Cihaz bilgileri</li>
+                </ul>
+
+                <h3>2.2 Veri İletişimi</h3>
+                <p>Uzantı:</p>
+                <ul>
+                    <li class="check-item">Hiçbir sunucuya veri göndermez</li>
+                    <li class="check-item">Hiçbir API çağrısı yapmaz</li>
+                    <li class="check-item">Hiçbir üçüncü taraf servis ile veri paylaşmaz</li>
+                    <li class="check-item">Hiçbir veri saklama mekanizması kullanmaz (localStorage, sessionStorage, chrome.storage, vb.)</li>
+                    <li class="check-item">Hiçbir telemetri veya analitik veri toplamaz</li>
+                </ul>
+
+                <h2>3. Çalışma Prensibi</h2>
+                <p>PassMind Chrome Uzantısı tamamen yerel olarak, yalnızca kullanıcının tarayıcısında çalışır:</p>
+
+                <h3>3.1 Teknik İşleyiş</h3>
+                <ul>
+                    <li>Uzantı yalnızca aktif tarayıcı sekmesinde çalışır</li>
+                    <li>Yalnızca şifre giriş alanlarını (<code>&lt;input type="password"&gt;</code>) tespit eder</li>
+                    <li>Tespit edilen şifre alanlarının yanına görsel bir göster/gizle butonu ekler</li>
+                    <li>Kullanıcı butona tıkladığında, yalnızca ilgili input alanının <code>type</code> özelliğini değiştirir</li>
+                    <li>Tüm işlemler tamamen tarayıcı içinde, yerel olarak gerçekleşir</li>
+                    <li>Hiçbir veri ağ üzerinden iletilmez</li>
+                </ul>
+
+                <h3>3.2 İzinler</h3>
+                <p>Uzantı yalnızca şu minimal izinleri kullanır:</p>
+                <ul>
+                    <li><strong><code>activeTab</code>:</strong> Yalnızca aktif sekmede çalışmak için</li>
+                    <li><strong><code>storage</code>:</strong> Kullanıcı ayarlarını (opsiyonel) saklamak için (kullanıcı tercihine bağlı)</li>
+                </ul>
+
+                <h2>4. İzleme ve Analitik</h2>
+                <p>PassMind Chrome Uzantısı:</p>
+                <ul>
+                    <li class="cross-item">İzleme çerezleri kullanmaz</li>
+                    <li class="cross-item">Üçüncü taraf analitik araçları (Google Analytics, vb.) kullanmaz</li>
+                    <li class="cross-item">Kullanıcı davranışlarını takip etmez</li>
+                    <li class="cross-item">Reklam veya pazarlama amaçlı veri toplamaz</li>
+                </ul>
+
+                <h2>5. Dış Bağlantılar ve Üçüncü Taraf Servisler</h2>
+                <p>Uzantı:</p>
+                <ul>
+                    <li>Hiçbir dış kaynağa bağlanmaz</li>
+                    <li>Hiçbir harici kaynak (CDN, API, vb.) yüklenmez</li>
+                    <li>Tamamen offline çalışabilir</li>
+                </ul>
+
+                <h2>6. Veri Güvenliği</h2>
+                <p>Uzantı hiçbir veri toplamadığı için, veri ihlali riski bulunmamaktadır. Tüm işlemler kullanıcının yerel cihazında gerçekleşir ve hiçbir veri ağ üzerinden iletilmez.</p>
+
+                <h2>7. Çocukların Gizliliği</h2>
+                <p>PassMind Chrome Uzantısı çocuklardan bilerek veri toplamaz. Uzantı genel kullanıma açıktır ve 13 yaş altındaki kullanıcıların kullanımı için ek izin gerekmemektedir, çünkü hiçbir veri toplanmamaktadır.</p>
+
+                <h2>8. Gizlilik Politikası Değişiklikleri</h2>
+                <p>Bu Gizlilik Politikası'nı zaman zaman güncelleyebiliriz. Önemli değişiklikler durumunda, yeni sürümün geçerlilik tarihini bu sayfada yayınlayacağız. Bu sayfayı düzenli olarak kontrol etmenizi öneririz.</p>
+                <p><strong>Son Güncelleme:</strong> 1 Ocak 2025</p>
+
+                <h2>9. İletişim</h2>
+                <p>Gizlilik politikamız hakkında sorularınız, endişeleriniz veya talepleriniz varsa:</p>
+                <ul>
+                    <li>Uzantının kaynak kodunu inceleyebilirsiniz</li>
+                    <li>GitHub repository üzerinden iletişime geçebilirsiniz</li>
+                </ul>
+
+                <h2>10. GDPR ve KVKK Uyumluluğu</h2>
+                <p>Bu uzantı, Avrupa Birliği'nin Genel Veri Koruma Yönetmeliği (GDPR) ve Türkiye'nin Kişisel Verilerin Korunması Kanunu (KVKK) dahil olmak üzere veri koruma yasalarına uyumludur. Hiçbir kişisel veri toplanmadığı için, bu yasalara göre ek bir veri işleme taahhüdü bulunmamaktadır.</p>
+            </div>
+
+            <!-- English Version -->
+            <div id="section-en" class="language-section">
+                <div class="meta-info">
+                    <p><strong>Last Updated:</strong> January 1, 2025</p>
+                    <p><strong>Effective Date:</strong> January 1, 2025</p>
+                </div>
+
+                <h2>1. Introduction</h2>
+                <p>At PassMind Chrome Extension ("Extension", "We", "Us"), we prioritize user privacy. This Privacy Policy describes how PassMind Chrome Extension collects, uses, and protects data.</p>
+                <p>By using this extension, you agree to the practices described in this Privacy Policy.</p>
+
+                <h2>2. Data Collection and Processing</h2>
+                
+                <h3>2.1 Collected Data</h3>
+                <div class="highlight-box">
+                    <p><strong>PassMind Chrome Extension does not collect, store, or process any personal data.</strong></p>
+                </div>
+                <p>The extension does NOT collect or process:</p>
+                <ul>
+                    <li>Passwords or credentials</li>
+                    <li>Personal identification information (PII)</li>
+                    <li>Browsing history</li>
+                    <li>Location data</li>
+                    <li>Device information</li>
+                </ul>
+
+                <h3>2.2 Data Transmission</h3>
+                <p>The extension:</p>
+                <ul>
+                    <li class="check-item">Does not send data to any server</li>
+                    <li class="check-item">Does not make API calls</li>
+                    <li class="check-item">Does not share data with third-party services</li>
+                    <li class="check-item">Does not use any data storage mechanisms (localStorage, sessionStorage, chrome.storage, etc.)</li>
+                    <li class="check-item">Does not collect telemetry or analytics data</li>
+                </ul>
+
+                <h2>3. How It Works</h2>
+                <p>The extension works entirely locally in the user's browser:</p>
+
+                <h3>3.1 Technical Operation</h3>
+                <ul>
+                    <li>Only runs in the active browser tab</li>
+                    <li>Only detects password input fields (<code>&lt;input type="password"&gt;</code>)</li>
+                    <li>Adds a show/hide button next to detected password fields</li>
+                    <li>When the button is clicked, only changes the input's <code>type</code> attribute</li>
+                    <li>All operations are performed locally in the browser</li>
+                    <li>No data is transmitted over the network</li>
+                </ul>
+
+                <h3>3.2 Permissions</h3>
+                <p>The extension uses only the following minimal permissions:</p>
+                <ul>
+                    <li><strong><code>activeTab</code>:</strong> To work only in the active tab</li>
+                    <li><strong><code>storage</code>:</strong> To store user settings (optional, based on user preference)</li>
+                </ul>
+
+                <h2>4. Tracking and Analytics</h2>
+                <p>PassMind Chrome Extension:</p>
+                <ul>
+                    <li class="cross-item">Does not use tracking cookies</li>
+                    <li class="cross-item">Does not use third-party analytics tools (Google Analytics, etc.)</li>
+                    <li class="cross-item">Does not track user behavior</li>
+                    <li class="cross-item">Does not collect data for advertising or marketing</li>
+                </ul>
+
+                <h2>5. External Links and Third-Party Services</h2>
+                <p>The extension:</p>
+                <ul>
+                    <li>Does not connect to external resources</li>
+                    <li>Does not load external sources (CDN, API, etc.)</li>
+                    <li>Can work completely offline</li>
+                </ul>
+
+                <h2>6. Data Security</h2>
+                <p>Since the extension collects no data, there is no risk of data breach. All operations occur locally on the user's device and no data is transmitted over the network.</p>
+
+                <h2>7. Children's Privacy</h2>
+                <p>PassMind Chrome Extension does not knowingly collect data from children. The extension is available for general use and no additional permission is required for users under 13, as no data is collected.</p>
+
+                <h2>8. Privacy Policy Changes</h2>
+                <p>We may update this Privacy Policy from time to time. For significant changes, we will publish the effective date of the new version on this page. We recommend checking this page regularly.</p>
+                <p><strong>Last Updated:</strong> January 1, 2025</p>
+
+                <h2>9. Contact</h2>
+                <p>If you have questions, concerns, or requests regarding our privacy policy:</p>
+                <ul>
+                    <li>You can review the extension's source code</li>
+                    <li>You can contact us through the GitHub repository</li>
+                </ul>
+
+                <h2>10. GDPR and Data Protection Compliance</h2>
+                <p>This extension complies with data protection laws, including the European Union's General Data Protection Regulation (GDPR) and Turkey's Personal Data Protection Law (KVKK). Since no personal data is collected, there is no additional data processing commitment under these laws.</p>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2025 PassMind Chrome Extension. Tüm hakları saklıdır / All rights reserved.</p>
+    </footer>
+
+    <script>
+        function switchLanguage(lang) {
+            // Hide all sections
+            document.querySelectorAll('.language-section').forEach(section => {
+                section.classList.remove('active');
+            });
+            
+            // Show selected section
+            document.getElementById('section-' + lang).classList.add('active');
+            
+            // Update button states
+            document.querySelectorAll('.language-switcher button').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            document.getElementById('btn-' + lang).classList.add('active');
+            
+            // Update header
+            const header = document.querySelector('header h1');
+            const subheader = document.querySelector('header p');
+            if (lang === 'tr') {
+                header.textContent = '🔒 Gizlilik Politikası';
+                subheader.textContent = 'PassMind Chrome Uzantısı';
+            } else {
+                header.textContent = '🔒 Privacy Policy';
+                subheader.textContent = 'PassMind Chrome Extension';
+            }
+        }
+    </script>
+</body>
+</html>
