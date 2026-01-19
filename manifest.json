@@ -2,7 +2,7 @@
   "manifest_version": 3,
   "name": "PassMind",
   "version": "1.0.0",
-  "description": "Password input alanlarının yanında şifre göster/gizle toggle butonu ekler",
+  "description": "Ekranın köşesindeki buton ile drawer üzerinden tüm password alanlarını göster/gizle",
   "permissions": [
     "activeTab",
     "storage"

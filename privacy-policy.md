@@ -138,8 +138,9 @@ The extension:
 The extension works entirely locally in the user's browser:
 - Only runs in the active browser tab
 - Only detects password input fields
-- Adds a show/hide button next to password fields
-- Changes only the input's `type` attribute when clicked
+- Shows a button in the corner of the screen when password fields are detected
+- Opens a drawer panel to show/hide all password fields at once
+- Changes only the input's `type` attribute when toggled
 - All operations are performed locally in the browser
 - No data is transmitted over the network
 

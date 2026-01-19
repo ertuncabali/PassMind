@@ -46,7 +46,7 @@ Chrome Web Store'a yayınlamak için gerekli hazırlıklar ve adımlar:
 **Gerekli bilgiler:**
 
 1. **Kısa açıklama (132 karakter):**
-   - Mevcut: "Password input alanlarının yanında şifre göster/gizle toggle butonu ekler"
+   - Mevcut: "Ekranın köşesindeki buton ile drawer'dan tüm password alanlarını göster/gizle"
    - İngilizce versiyonu da hazırlanmalı
 
 2. **Uzun açıklama (132 karakter - 13200 karakter):**
