@@ -114,12 +114,12 @@
   top: 0;
   right: -400px;
   width: 380px;
-  height: 100vh;
+  height: 98vh;
   background: white;
   box-shadow: -2px 0 12px rgba(0, 0, 0, 0.15);
   z-index: 999999;
   transition: right 0.3s ease;
-  overflow-y: auto;
+  overflow: hidden;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
 }
 
@@ -190,7 +190,7 @@
   padding: 20px;
   padding-bottom: 60px; /* Dil seçici için yer aç */
   position: relative;
-  min-height: calc(100vh - 60px); /* Header hariç yükseklik */
+  min-height: calc(98vh - 60px); /* Header hariç yükseklik */
 }
 
 /* Info Section */
@@ -265,7 +265,7 @@
 /* Language Section - Drawer'ın altında profesyonel görünüm */
 .show-password-language-section {
   position: absolute;
-  bottom: 0;
+  bottom: 30px;
   left: 0;
   right: 0;
   padding: 16px 20px;
